@@ -1880,7 +1880,7 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate, WKNavi
         
         if let url = navigationAction.request.url {
             
-            if activateShouldOverrideUrlLoading && (options?.useShouldOverrideUrlLoading)! {
+            if activateShouldOverrideUrlLoading && options?.useShouldOverrideUrlLoading ?? false {
                 
                 let isForMainFrame = navigationAction.targetFrame?.isMainFrame ?? false
                 
@@ -1947,7 +1947,7 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate, WKNavi
             }
         }
         
-        if (options?.useOnDownloadStart)! {
+        if options?.useOnDownloadStart ?? false {
             let mimeType = navigationResponse.response.mimeType
             if let url = navigationResponse.response.url, navigationResponse.isForMainFrame {
                 if mimeType != nil && !mimeType!.starts(with: "text/") {
